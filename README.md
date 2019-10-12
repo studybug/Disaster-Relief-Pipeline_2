@@ -3,7 +3,7 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [General details](#General details)
+* [General details](#General-details)
 * [Technologies](#technologies)
 * [Setup](#setup)
 
@@ -22,6 +22,7 @@ Below are a few screenshots of the web app.
 Project is created with:
 * Python version: 3.7
 * Jupyter Notebooks
+* Terminal, Linux
 
 	
 ## Setup
@@ -30,23 +31,22 @@ This project requires file:
 * Model: classifier.pkl, train_classifier.py
 * App: run.py, [templates]
 
-- app
-| - template
-| |- master.html  # main page of web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
+* app
+	* template
+	* master.html  # main page of web app
+	* go.html  # classification result page of web app
+	* run.py  # Flask file that runs app
+* data
+	* disaster_categories.csv  # data to process 
+	* disaster_messages.csv  # data to process
+	* process_data.py
+	* InsertDatabaseName.db   # database to save clean data to
 
-- data
-|- disaster_categories.csv  # data to process 
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- InsertDatabaseName.db   # database to save clean data to
+* models
+	* train_classifier.py
+ 	* classifier.pkl  # saved model 
 
-- models
-|- train_classifier.py
-|- classifier.pkl  # saved model 
 
-- README.md
 
 To run the file on a terminal:
 
