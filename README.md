@@ -54,9 +54,9 @@ To run the file on a terminal:
 
 ```python train_classifier.py ../data/DisasterResponse.db classifier.pkl```
 
-Type in the command line:
+Type in the command line to finalize the web app:
 
 ```python run.py```
 
-Then Go to http://0.0.0.0:3001/ or your use command env|grep WORK with https://SPACEID-3001.SPACEDOMAIN
+Then go to http://0.0.0.0:3001/ or your use command env|grep WORK with https://SPACEID-3001.SPACEDOMAIN
 
