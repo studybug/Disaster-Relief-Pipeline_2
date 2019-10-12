@@ -11,8 +11,7 @@
 
 In this project, I create a machine learning pipeline to analyze real disaster data from Figure Eight with the intent that these message categories will be viewed and sent to an appropriate disaster relief agency. My project also included a web app where an emergency worker can input a new message and get classification results in several categories. 
 
-## General deta
-ils
+## General details
 * The data came in this format: disaster_categories.csv, disaster_messages.csv
 * The project was cleaned, filtered, and categorized into two main files in a jupyternotebook: ETL Pipeline Preparation (1).ipynb, ML Pipeline Preparation (1).ipynb
 * The project was reorganized in a repetable execution for a terminal: process_data.py, train_classifier.py, run.py
