@@ -12,7 +12,12 @@ from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
 
+from sklearn.base import BaseEstimator, TransformerMixin
+
+
+
 app = Flask(__name__)
+
 
 def tokenize(text):
     tokens = word_tokenize(text)
@@ -27,10 +32,11 @@ def tokenize(text):
 
 # load data
 engine = create_engine('sqlite:///../data/DisasterResponse.db')
-df = pd.read_sql_table('DisasterResponse', con=engine)
+df = pd.read_sql_table('DisasterResponse', engine)
 
 # load model
-model = joblib.load("../model/classifier.pkl")
+model = joblib.load("../models/classifier.pkl")
+
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
@@ -42,10 +48,12 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
-    categories = df.drop(['message', 'original', 'genre'], axis=1)
+    y = df.drop(['id','message', 'original', 'genre'], axis=1)
 
-    category_counts = categories.sum().tolist()
-    category_names = list(categories.columns)
+    category_counts = y.sum().tolist()
+    category_names = list(y.columns)
+    category_boolean = (df.iloc[:,4:] != 0).sum().values
+
     
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
@@ -72,20 +80,21 @@ def index():
             'data': [
                 Bar(
                     x=category_names,
-                    y=category_names
+                    y=category_boolean
                 )
             ],
-            
-            'layout': { 
-                'title': 'Distribution of Catergories',
+
+            'layout': {
+                'title': 'Distribution of Message Categorizations',
                 'yaxis': {
                     'title': "Count"
                 },
                 'xaxis': {
-                    'title': "Categories"
+                    'title': "Category"
                 }
             }
         }
+
     ]
     
     # encode plotly graphs in JSON
@@ -120,3 +129,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
